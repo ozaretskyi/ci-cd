@@ -7,6 +7,7 @@ ci-cd autodeployment
 2. Depoy Zabbix server
 
 3. Make Jenkins jobs:
+
     a. Create AWS instance and provision tomcat, zabbix agent
     b. Make mvn build and push to artifactory
     c. Deploy project from artifactory to AWS instance
