@@ -1,0 +1,5 @@
+[tomcat]
+za-test ansible_host=localhost ansibe_port=2222 ansible_connection=ssh ansible_user=rustle
+
+[tomcat:vars]
+

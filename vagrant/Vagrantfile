@@ -10,7 +10,7 @@ Vagrant.configure(2) do |config|
     vm0.vm.network "private_network", type: "dhcp"
     config.vm.provider "virtualbox" do |vb|
       # Customize the amount of memory on the VM:
-      vb.memory = "2048"
+      vm0.vb.memory = "2048"
     end
 #    vm0_config.vm.network = hostonly, vboxnet0
     vm0.vm.network "forwarded_port", guest: 8080, host: 8080
@@ -38,9 +38,10 @@ Vagrant.configure(2) do |config|
     vm2_config.vm.box = "vm2"
     vm2_config.vm.network "private_network", type: "dhcp"
     vm2_config.vm.network "forwarded_port", guest: 8081, host: 8081
+    vm0.vm.network "forwarded_port", guest: 10050, host: 10050
     config.vm.provider "virtualbox" do |vb|
         # Customize the amount of memory on the VM:
-        vb.memory = "1024"
+        vm2_config.vb.memory = "1024"
     end
 
     vm2_config.vm.provision "shell",

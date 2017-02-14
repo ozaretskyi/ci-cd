@@ -1,0 +1,40 @@
+---
+- name: Configure Zabbix official repository
+  yum_repository:
+    name: Zabbix
+    description: Zabbix Official Repository
+    baseurl: http://repo.zabbix.com/zabbix/3.0/rhel/7/$basearch
+    gpgkey: http://repo.zabbix.com/RPM-GPG-KEY-ZABBIX
+    gpgcheck: yes
+    priority: 2
+
+- name: Update SELinux yum packages to latest
+  yum:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - selinux-policy
+    - policycoreutils
+    - selinux-policy-targeted
+    - policycoreutils-python
+    - polkit
+
+- name: Install yum packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - unixODBC
+    - libtool-ltdl
+    - zabbix-agent
+    - zabbix-sender
+    - zabbix-get
+
+- name: Run Zabbix Agent on boot
+  service:
+    name: "{{ item }}"
+    state: started
+    enabled: yes
+  with_items:
+    - zabbix-agent
+

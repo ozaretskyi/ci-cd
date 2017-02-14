@@ -1,7 +1,7 @@
 ---
-- name: Install JAVA 1.7
+- name: Install JAVA 1.8
   become: true
-  yum: pkg=java-1.7.0-openjdk state=present
+  yum: pkg=java-1.8.0-openjdk state=present
 
 - name: Install Tomcat
   become: true
