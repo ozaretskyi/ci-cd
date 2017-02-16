@@ -4,4 +4,5 @@
 - name: Install Tomcat Server
   hosts: all
   roles:
+    - java
     - tomcat

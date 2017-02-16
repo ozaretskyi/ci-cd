@@ -1,12 +1,15 @@
 ---
-- name: Configure Zabbix official repository
-  yum_repository:
-    name: Zabbix
-    description: Zabbix Official Repository
-    baseurl: http://repo.zabbix.com/zabbix/3.0/rhel/7/$basearch
-    gpgkey: http://repo.zabbix.com/RPM-GPG-KEY-ZABBIX
-    gpgcheck: yes
-    priority: 2
+
+- name: Import Zabbix key
+  rpm_key:
+    key: http://repo.zabbix.com/RPM-GPG-KEY-ZABBIX
+    state: present
+    validate_certs: no
+
+- name: repo
+  copy: src=files/zabbix.repo
+    dest=/etc/yum.repos.d/
+    owner=root group=root mode=0644
 
 - name: Update SELinux yum packages to latest
   yum:
@@ -24,17 +27,32 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - unixODBC
+#    - unixODBC
     - libtool-ltdl
     - zabbix-agent
-    - zabbix-sender
-    - zabbix-get
+#    - zabbix-sender
+#    - zabbix-get
+
+
+- name: copy configuration file
+  copy:
+    src=files/zabbix_agentd.conf
+    dest=/etc/zabbix/zabbix_agentd.conf
+    owner=root group=root mode=0644
+
+- name: Start firewalld service
+  service:
+     name: firewalld
+     state: started
+     enabled: yes
+
+- name: Opening port 10050
+  firewalld: port=10050/tcp permanent=true state=enabled
 
 - name: Run Zabbix Agent on boot
   service:
-    name: "{{ item }}"
+    name: zabbix-agent
     state: started
     enabled: yes
-  with_items:
-    - zabbix-agent
-
+  notify:
+    - restart zabbix-agent

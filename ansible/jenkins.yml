@@ -1,0 +1,8 @@
+---
+# This playbook installs Jenkins.
+
+- name: Install Jenkins
+  hosts: all
+  roles:
+    - java
+    - jenkins

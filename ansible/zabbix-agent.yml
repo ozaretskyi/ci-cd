@@ -2,10 +2,5 @@
 - name: install zabbix-agent
   hosts: all
   roles:
+  - java
   - zabbix-agent
-
-- name: copy configuration file
-  template: src=zabbix_agentd.conf.j2 dest=/etc/zabbix/zabbix_agentd.conf owner=root group=root mode=0644
-
-- name: Opening port 10050
-  firewalld: port=10050/tcp permanent=true state=enabled

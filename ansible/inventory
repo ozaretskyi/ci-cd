@@ -1,3 +1,9 @@
+[hosts]
+zabbix-server
+jenkins
+test
+aws-ec2-instance
+
 [jenkins]
 jenkins ansible_host=localhost ansible_port=2200 ansible_user=vagrant
 
@@ -8,11 +14,11 @@ aws-ec2-instance ansible_host=54.159.154.70 ansible_port=22022 ansible_connectio
 zabbix-server ansible_host=localhost ansible_port=2201 ansible_connection=ssh ansible_user=vagrant
 
 [test-vm]
-za-test ansible_host=localhost ansibe_port=2222 ansible_connection=ssh ansible_user=rustle
+test ansible_host=localhost ansible_port=2200 ansible_connection=ssh
 
 [all:vars]
-#ansible_user="ubuntu"
+ansible_user="vagrant"
 #ansible_password="vagrant"
-ansible_private_key_file="~/.ssh/id_rsa.key"
-#ansible_become=true
-#ansible_become_root=true
+ansible_private_key_file="~/.ssh/id_rsa"
+ansible_become=true
+ansible_become_root=true
