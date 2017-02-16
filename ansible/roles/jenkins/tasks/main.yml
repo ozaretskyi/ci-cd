@@ -8,7 +8,7 @@
     state: present
     validate_certs: no
 
-- name: Get jenkins repo for ansible
+- name: Get jenkins repo
   get_url:
     url: http://pkg.jenkins-ci.org/redhat/jenkins.repo
     dest: /etc/yum.repos.d/jenkins.repo

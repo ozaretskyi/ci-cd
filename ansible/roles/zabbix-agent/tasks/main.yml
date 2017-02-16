@@ -6,48 +6,22 @@
     state: present
     validate_certs: no
 
-- name: repo
+- name: Set Zabbix repo
   copy: src=files/zabbix.repo
     dest=/etc/yum.repos.d/
     owner=root group=root mode=0644
 
-- name: Update SELinux yum packages to latest
+- name: Install Zabbix-agent
   yum:
-    name: "{{ item }}"
-    state: latest
-  with_items:
-    - selinux-policy
-    - policycoreutils
-    - selinux-policy-targeted
-    - policycoreutils-python
-    - polkit
-
-- name: Install yum packages
-  yum:
-    name: "{{ item }}"
+    name: zabbix-agent
     state: present
-  with_items:
-#    - unixODBC
-    - libtool-ltdl
-    - zabbix-agent
-#    - zabbix-sender
-#    - zabbix-get
 
 
-- name: copy configuration file
+- name: Copy configuration file
   copy:
     src=files/zabbix_agentd.conf
     dest=/etc/zabbix/zabbix_agentd.conf
     owner=root group=root mode=0644
-
-- name: Start firewalld service
-  service:
-     name: firewalld
-     state: started
-     enabled: yes
-
-- name: Opening port 10050
-  firewalld: port=10050/tcp permanent=true state=enabled
 
 - name: Run Zabbix Agent on boot
   service:
