@@ -5,18 +5,20 @@ test
 aws-ec2-instance
 
 [jenkins]
-jenkins ansible_host=localhost ansible_port=2200 ansible_user=vagrant
+jenkins ansible_port=2200
 
 [aws]
 aws-ec2-instance ansible_host=54.159.154.70 ansible_port=22022 ansible_connection=ssh ansible_user=ubuntu
 
 [zabbix-srv]
-zabbix-server ansible_host=localhost ansible_port=2201 ansible_connection=ssh ansible_user=vagrant
+zabbix-server ansible_port=2201
 
 [test-vm]
-test ansible_host=localhost ansible_port=2200 ansible_connection=ssh
+test ansible_port=2200
+loctest ansible_port=2222 ansible_user=rustle
 
 [all:vars]
+ansible_host=localhost
 ansible_user="vagrant"
 #ansible_password="vagrant"
 ansible_private_key_file="~/.ssh/id_rsa"
