@@ -1,0 +1,4 @@
+- name: GitLab Testing
+  hosts: gitlab-ce
+  roles:
+    - gitlab
