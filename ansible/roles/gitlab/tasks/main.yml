@@ -19,7 +19,11 @@
 
 - name: Install gitlab
   yum: name=gitlab-ce state=latest
-  notify: configure gitlab
+
+- name: Reconfigure GitLab (first run).
+  command: gitlab-ctl reconfigure
+    creates=/var/opt/gitlab/bootstrapped
+  failed_when: false
 
 - name: Enable sshd
   service: name=sshd enabled=yes
@@ -29,7 +33,3 @@
   service: name=postfix enabled=yes
   notify: restart postfix
 
-- name: Copy template (for AD)
-  template: src=gitlab.rb.j2 dest=/etc/gitlab/gitlab.rb owner=root group=root mode=0600
-  notify: configure gitlab
-  when: gitlab_ad
