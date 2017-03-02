@@ -9,9 +9,13 @@
 
 - name: Download GitLab repository installation script.
   get_url:
-    url: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh dest=/usr/src/gitlab.rpm.sh mode=0755 validate_certs=no
+    url: https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.rpm.sh
+    dest: /usr/src/gitlab.rpm.sh
+    mode: 0755
+    validate_certs: no
 
-- script:  /usr/src/gitlab.rpm.sh
+- name: Install gitlab repo
+  shell: /usr/src/gitlab.rpm.sh
 
 - name: Install gitlab
   yum: name=gitlab-ce state=latest
