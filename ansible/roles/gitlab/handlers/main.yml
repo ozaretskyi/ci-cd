@@ -1,9 +1,7 @@
 - name: restart postfix
-  become: true
   service: name=postfix state=restarted
 
 - name: restart sshd
-  become: true
   service: name=sshd state=restarted
 
 - name: configure gitlab

@@ -2,4 +2,4 @@
 - name: Install Java
   hosts: all
   roles:
-  - java
+    - java

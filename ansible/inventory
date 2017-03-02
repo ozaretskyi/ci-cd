@@ -3,6 +3,7 @@ zabbix-server
 jenkins
 test-vm
 aws-ec2-instance
+gitlab-ce ansible_port=2222
 
 [jenkins]
 jenkins ansible_port=2200
@@ -14,7 +15,7 @@ aws-ec2-instance ansible_host=54.159.154.70 ansible_port=22022 ansible_connectio
 zabbix-server ansible_port=2201
 
 [gitlab-ce]
-gitlab ansible_port=2202
+gitlab-ce ansible_port=2222
 
 [test-vm]
 test ansible_port=2200
