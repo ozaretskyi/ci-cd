@@ -3,6 +3,7 @@
 
 - name: Install Jenkins
   hosts: all
+  sudo: true
   roles:
     - java
     - jenkins
