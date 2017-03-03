@@ -12,10 +12,10 @@ jenkins ansible_ssh_port=2200
 aws-ec2-instance ansible_host=54.159.154.70 ansible_ssh_port=22022 ansible_connection=ssh ansible_user=ubuntu
 
 [zabbix-srv]
-zabbix-server ansible_ssh_port=2201
+zabbix-server ansible_ssh_port=2202
 
 [gitlab0-ce]
-gitlab-ce ansible_ssh_port=2205
+gitlab-ce ansible_ssh_port=2201
 
 [test-vm]
 test ansible_ssh_port=2200
