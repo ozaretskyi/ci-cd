@@ -28,9 +28,8 @@
 
 - name: Run Zabbix on boot
   service:
-    name: "{{ item }}"
+    name: zabbix-server
     state: started
     enabled: yes
-  with_items:
-    - zabbix-server
+
 
