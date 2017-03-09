@@ -1,6 +1,9 @@
 ---
-- name: Install python-pycurl
-  yum: name=python-pycurl state=installed
+- name: Install packeges
+  yum: name={{ item }} state=latest
+  with_items:
+  - python-pycurl
+  - git
 
 - name: Get jenkins repo
   get_url:
@@ -19,7 +22,3 @@
 
 - name: Start Jenkins service
   service: name=jenkins state=started
-
-- name: Initial Password
-  sudo: true
-  shell: "cat /var/lib/jenkins/secrets/initialAdminPassword"

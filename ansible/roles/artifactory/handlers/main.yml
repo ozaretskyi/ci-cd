@@ -1,0 +1,4 @@
+---
+- name: restart artifactory
+  sudo: true
+  service: name=artifactory state=restarted
