@@ -16,7 +16,7 @@ JOB_PARAMS="$JOB_PARAMS&NEW_HOST_FQDN=$NEW_HOST_FQDN"
 JOB_PARAMS="$JOB_PARAMS&NEW_HOST_ID=$NEW_HOST_ID"
 JOB_PARAMS="$JOB_PARAMS&NEW_HOST_REGION=$NEW_HOST_REGION"
 #JOB_PARAMS="$JOB_PARAMS&NEW_HOST_ENV=$NEW_HOST_ENV"
-JOB_URL="job/provision-aws-instance/build?token=$TOKEN$JOB_PARAMS"
+JOB_URL="job/bootstrap-aws-instance/build?token=$TOKEN$JOB_PARAMS"
 URL="$JENKINS_URL/$JOB_URL"
 echo "#!/bin/bash" > /root/provision.sh
 echo "URL=\"$URL\"" >> /root/provision.sh
