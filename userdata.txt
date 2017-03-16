@@ -4,7 +4,7 @@ yum update -y curl
 yum -y install epel-release
 yum makecache fast
 yum -y install python-pip python-boto
-yum -y install ansible mc net-tools  
+yum -y install ansible mc net-tools
 yum -y update
 pip install awscli --upgrade
 yum clean all
