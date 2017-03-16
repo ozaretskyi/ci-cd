@@ -10,7 +10,7 @@
 node ('master') {
     wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
         timestamps {
-            dir("../workspace@script/ansible/") {
+            dir("../workspace@script/ansible") {
 
                 stage name: "Refresh inventory cache"
                 sh 'inventory/ec2.py --refresh-cache'
