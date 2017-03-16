@@ -1,11 +1,10 @@
 #!/bin/bash -xe
 #sed -i 's/Defaults[ ]*requiretty/#Defaults requiretty/g' /etc/sudoers
-yum update -y curl
+yum update -y
 yum -y install epel-release
 yum makecache fast
 yum -y update
 yum -y install python-boto
-yum -y install ansible
 yum -y install python-pip
 pip install awscli --upgrade
 pip install ansible
