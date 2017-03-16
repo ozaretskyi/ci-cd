@@ -6,4 +6,5 @@
   sudo: true
   roles:
     - java
+    - aws-cli
     - jenkins

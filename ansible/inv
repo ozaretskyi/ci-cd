@@ -18,13 +18,13 @@ zabbix-srv ansible_ssh_port=2202
 gitlab-ce ansible_ssh_port=2201
 
 [test-vm]
-test ansible_ssh_port=2200
+test ansible_ssh_port=2222 ansible_ssh_user=rustle
 loctest ansible_ssh_port=2222 ansible_user=rustle
 
 [all:vars]
 ansible_ssh_host=localhost
 ansible_ssh_user="vagrant"
-#ansible_password="vagrant"
+#ansible_password=""
 ansible_private_key_file="/home/rustle/.ssh/id_rsa"
 ansible_become=true
 ansible_become_root=true

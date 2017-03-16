@@ -1,0 +1,13 @@
+---
+- name: Download pip installation script.
+  get_url:
+    url: https://bootstrap.pypa.io/get-pip.py
+    dest: ~/get-pip.py
+
+- name: install pip
+  become: true
+  command: "python ~/get-pip.py"
+
+- name: Install AWS CLI
+  become: true
+  shell: "pip install awscli --upgrade --user"

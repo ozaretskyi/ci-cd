@@ -4,6 +4,7 @@
   with_items:
   - python-pycurl
   - git
+  - ansible
 
 - name: Get jenkins repo
   get_url:

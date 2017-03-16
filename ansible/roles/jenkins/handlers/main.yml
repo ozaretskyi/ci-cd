@@ -1,4 +1,4 @@
 ---
 - name: restart jenkins
-  sudo: true
+  become: yes
   service: name=jenkins state=restarted

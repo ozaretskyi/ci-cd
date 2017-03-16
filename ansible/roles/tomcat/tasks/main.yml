@@ -1,14 +1,14 @@
 ---
-- name: Install JAVA 1.8
-  become: true
-  yum: pkg=java-1.8.0-openjdk state=present
-
 - name: Install Tomcat
   become: true
   yum: name=tomcat state=present
   notify: restart tomcat
 
-- name: Enable Tomcat
+- name: Ensure Tomcat is enabled
   become: true
   service: name=tomcat enabled=yes
   notify: restart tomcat
+
+- include: config.yml
+  become: true
+
