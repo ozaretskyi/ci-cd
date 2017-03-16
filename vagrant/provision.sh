@@ -1,4 +1,6 @@
 #/bin/bash
 yum update -y
-yum install epel-release mc vim net-tools wget python-boto -y
+yum install epel-release -y
+yum install mc vim wget net-tools -y
+yum install pip ansible python-boto -y
 

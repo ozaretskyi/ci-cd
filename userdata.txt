@@ -1,11 +1,12 @@
 #!/bin/bash -xe
-yum update -y curl
 #sed -i 's/Defaults[ ]*requiretty/#Defaults requiretty/g' /etc/sudoers
 yum update -y curl
 yum -y install epel-release
 yum makecache fast
-yum -y install python-boto
+yum -y install python-pip python-boto
+yum -y install ansible mc net-tools  
 yum -y update
+pip install awscli --upgrade
 yum clean all
 JENKINS_URL="http://54.159.154.70:8080"
 TOKEN="bootstrapme"
