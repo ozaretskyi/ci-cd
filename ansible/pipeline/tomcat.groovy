@@ -10,8 +10,7 @@
 node ('master') {
     wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm']) {
         timestamps {
-            build '/Bootstrap/GIT'
-            dir("../workspace@script/ansible") {
+            dir("../workspace@script/ansible/") {
 
                 stage name: "Refresh inventory cache"
                 sh 'inventory/ec2.py --refresh-cache'
@@ -22,7 +21,7 @@ node ('master') {
                         limit: "$NEW_HOST_ID",
                         playbook: 'tomcat.yml',
                         sudoUser: null,
-                        extras: "-u centos --private-key=~/.ssh/id_rsa"
+                        extras: "-u ec2-user --private-key=~/.ssh/jenkins.pem"
 
             }
 
