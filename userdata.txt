@@ -10,7 +10,7 @@ yum -y install python-pip
 pip install awscli --upgrade
 pip install ansible
 yum clean all
-JENKINS_URL="http://54.159.154.70:8080"
+JENKINS_URL="http://172.31.49.85:8080"
 TOKEN="bootstrapme"
 NEW_HOST_FQDN=`curl http://169.254.169.254/latest/meta-data/public-ipv4`
 NEW_HOST_ID=`curl -s http://169.254.169.254/latest/meta-data/instance-id`
