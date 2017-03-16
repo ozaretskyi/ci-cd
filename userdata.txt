@@ -22,6 +22,6 @@ URL="$JENKINS_URL/$JOB_URL"
 echo "#!/bin/bash" > /root/provision.sh
 echo "URL=\"$URL\"" >> /root/provision.sh
 echo "sleep 60" >> /root/provision.sh
-echo 'while true ; do STATUSCODE=$(curl -X POST --silent --connect-timeout 60  --max-time 600 --output "/tmp/curltmp1" --write-out "%{http_code}" "$URL"  ); if test $STATUSCODE -ne 201; then echo "Status code $STATUSCODE not 201!"; sleep
- 30; else break; fi || break; done' >> /root/provision.sh
+echo 'while true ; do STATUSCODE=$(curl -X POST --silent --connect-timeout 60  --max-time 600 --output "/tmp/curltmp1" --write-out "%{http_code}" "$URL"  ); if test $STATUSCODE -ne 201; then echo "Status code $STATUSCODE not 201!"; sleep 30; else break; fi || break; done' >> /root/provision.sh
+chmod 755 /root/provision.sh
 nohup bash /root/provision.sh &
