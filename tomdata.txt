@@ -18,7 +18,18 @@ cd /opt
 mv apache-tomcat-9.0.0.M18 tomcat
 echo "export CATALINA_HOME='/opt/tomcat/'" >> ~/.bashrc
 source ~/.bashrc
+cd /opt/tomcat
+chgrp -R tomcat conf
+chmod g+rwx conf
+chmod g+r conf/*
+chown -R tomcat:tomcat work/ temp/ logs/
 cd /opt/tomcat/bin
 chmod +x *.sh
+
+echo "Config Tomcat users" >> ~/bootstrapped
+echo "<tomcat-users>" > /opt/tomcat/conf/tomcat-users.xml
+echo "<user username="admin" password="password" roles="manager-gui,admin-gui"/>" >> /opt/tomcat/conf/tomcat-users.xml
+echo "</tomcat-users>" >> /opt/tomcat/conf/tomcat-users.xml
+
 ./startup.sh
 echo "bootstrapped with userdata" >> ~/bootstrapped
