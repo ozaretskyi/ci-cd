@@ -11,4 +11,4 @@ yum clean all
 yum install java-1.8.0-openjdk -y
 yum install tomcat -y
 chkconfig tomcat on
-
+echo "bootstrapped with userdata" >> ~/bootstrapped
