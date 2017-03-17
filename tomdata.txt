@@ -18,6 +18,9 @@ cd /opt
 mv apache-tomcat-9.0.0.M18 tomcat
 echo "export CATALINA_HOME='/opt/tomcat/'" >> ~/.bashrc
 source ~/.bashrc
+
+groupadd tomcat
+useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat
 cd /opt/tomcat
 chgrp -R tomcat conf
 chmod g+rwx conf
