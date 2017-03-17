@@ -1,0 +1,14 @@
+#!/bin/bash -v
+yum update -y
+yum -y install epel-release
+yum makecache fast
+yum -y update
+yum -y install python-boto
+yum -y install python-pip
+pip install awscli --upgrade
+pip install ansible
+yum clean all
+yum install java-1.8.0-openjdk -y
+yum install tomcat -y
+chkconfig tomcat on
+
