@@ -1,14 +1,16 @@
 #!/bin/bash -v
 yum update -y
-yum -y install epel-release
+yum install epel-release -y
 yum makecache fast
-yum -y update
-yum -y install python-boto
-yum -y install python-pip
+yum update -y
+yum install python-boto -y
+yum install python-pip -y
 pip install awscli --upgrade
 pip install ansible
 yum clean all
 yum install java-1.8.0-openjdk -y
 yum install tomcat -y
-chkconfig tomcat on
+systemctl enable tomcat
+yum install tomcat-docs-webapp tomcat-javadoc -y
+
 echo "bootstrapped with userdata" >> ~/bootstrapped
