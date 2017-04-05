@@ -26,6 +26,18 @@
     - zabbix-agent
     - zabbix-java-gateway
 
+- name: Copy configuration file
+  copy:
+    src=files/zabbix_server.conf
+    dest=/etc/zabbix/zabbix_server.conf
+    owner=root group=root mode=0644
+
+- name: Copy configuration file
+  copy:
+    src=files/zabbix.conf.php
+    dest=/etc/zabbix/web/zabbix.conf.php
+    owner=root group=root mode=0644
+
 - name: Run Zabbix on boot
   service:
     name: zabbix-server
