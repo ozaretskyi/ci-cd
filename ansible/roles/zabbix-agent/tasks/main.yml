@@ -30,3 +30,6 @@
     enabled: yes
   notify:
     - restart zabbix-agent
+
+- name: Craete Folder
+  file: path=/run/zabbix/ owner=zabbix group=zabbix mode=0755 state=directory
