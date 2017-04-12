@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<user>
+  <fullName>Jenkins CI</fullName>
+  <description></description>
+  <properties>
+    <jenkins.security.ApiTokenProperty>
+      <apiToken>{AQAAABAAAAAwqAQjVNvdz8UKJRZA4AgYIyifBdnIDUTa4/F1xkUMghZPmrWmS+d6HLDKCDnhtQwiCHeIA4wrNngmrCznKoPeSQ==}</apiToken>
+    </jenkins.security.ApiTokenProperty>
+    <com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty plugin="credentials@2.1.13">
+      <domainCredentialsMap class="hudson.util.CopyOnWriteMap$Hash"/>
+    </com.cloudbees.plugins.credentials.UserCredentialsProvider_-UserCredentialsProperty>
+    <hudson.tasks.Mailer_-UserProperty plugin="mailer@1.19">
+      <emailAddress>jenkins@mail.loc</emailAddress>
+    </hudson.tasks.Mailer_-UserProperty>
+    <hudson.plugins.emailext.watching.EmailExtWatchAction_-UserProperty plugin="email-ext@2.57">
+      <triggers/>
+    </hudson.plugins.emailext.watching.EmailExtWatchAction_-UserProperty>
+    <hudson.model.MyViewsProperty>
+      <primaryViewName></primaryViewName>
+      <views>
+        <hudson.model.AllView>
+          <owner class="hudson.model.MyViewsProperty" reference="../../.."/>
+          <name>all</name>
+          <filterExecutors>false</filterExecutors>
+          <filterQueue>false</filterQueue>
+          <properties class="hudson.model.View$PropertyList"/>
+        </hudson.model.AllView>
+      </views>
+    </hudson.model.MyViewsProperty>
+    <org.jenkinsci.plugins.displayurlapi.user.PreferredProviderUserProperty plugin="display-url-api@1.1.1">
+      <providerId>default</providerId>
+    </org.jenkinsci.plugins.displayurlapi.user.PreferredProviderUserProperty>
+    <hudson.model.PaneStatusProperties>
+      <collapsed/>
+    </hudson.model.PaneStatusProperties>
+    <hudson.security.HudsonPrivateSecurityRealm_-Details>
+      <passwordHash>#jbcrypt:$2a$10$9nBS4Maww9XrBRAXtAjiUendIa09dfZuio67bk0j/iMSJlQfbMfgm</passwordHash>
+    </hudson.security.HudsonPrivateSecurityRealm_-Details>
+    <org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl>
+      <authorizedKeys>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC9II+ZXETRi4Jpv1P3wM7DN9hA7vllwNaHlgveAqkJ6cyNo8t4JzgeBCip2ITawxA11bdO1iG+C01lUxYtrFZ8TFFGn/n1RWQ2yX54i/Wf7rFTU63fYxFx8XkNDOL4R1QJ8qDDdBj7DUd2jkFylM67Lr61XBmO8dZv3utn196KIVm9xl8yECSaMiAXUr/2ZlEOwObATHaX50WSw8ZAHZN1ejhS1zYE7dp34TcA1IAf0/Ab0quLJg+rdY/J2kHRtQ57GIz/L5li7MyTem/6UIdHouPp1Wjw8FN8T4XGIb6OmSFu9mwntaFqBLf5lV1fpG6ukJ+JngqYqXL//ogPq4XL vagrant@jenkins</authorizedKeys>
+    </org.jenkinsci.main.modules.cli.auth.ssh.UserPropertyImpl>
+    <hudson.search.UserSearchProperty>
+      <insensitiveSearch>false</insensitiveSearch>
+    </hudson.search.UserSearchProperty>
+    <jenkins.security.LastGrantedAuthoritiesProperty>
+      <roles>
+        <string>authenticated</string>
+      </roles>
+      <timestamp>1489059450928</timestamp>
+    </jenkins.security.LastGrantedAuthoritiesProperty>
+  </properties>
+</user>

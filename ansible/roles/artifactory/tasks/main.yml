@@ -16,3 +16,9 @@
 
 - name: Enable Artifactory
   shell: ./installService.sh
+
+- name: Copy configuration file
+  copy:
+    src=files/artifactory.config.latest.xml
+    dest=/var/lib/artifactory/etc/artifactory.config.latest.xml
+    owner=artifactory group=artifactory mode=0644

@@ -36,4 +36,4 @@ echo '<user username="admin" password="password" roles="manager-gui,admin-gui"/>
 echo "</tomcat-users>" >> /opt/tomcat/conf/tomcat-users.xml
 
 ./startup.sh
-echo "bootstrapped with userdata" >> ~/bootstrapped
+echo "End of bootstrap with userdata" >> ~/bootstrapped

@@ -21,7 +21,10 @@
   copy:
     src=files/zabbix_agentd.conf
     dest=/etc/zabbix/zabbix_agentd.conf
-    owner=root group=root mode=0644
+    owner=zabbix group=zabbix mode=0644
+
+- name: Craete Folder
+  file: path=/run/zabbix/ owner=zabbix group=zabbix mode=0755 state=directory
 
 - name: Run Zabbix Agent on boot
   service:
@@ -31,5 +34,3 @@
   notify:
     - restart zabbix-agent
 
-- name: Craete Folder
-  file: path=/run/zabbix/ owner=zabbix group=zabbix mode=0755 state=directory
