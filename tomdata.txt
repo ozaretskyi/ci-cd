@@ -9,13 +9,11 @@ yum update -y
 #pip install awscli --upgrade
 #pip install ansible
 yum clean all
-echo "Install Java" >> ~/bootstrapped
+#echo "Install Java" >> ~/bootstrapped
 #yum install java-1.8.0-openjdk -y
 echo "Install Tomcat" >> ~/bootstrapped
-yum install tomcat8-webapps tomcat8-admin-webapps -y
+yum install tomcat7-webapps tomcat7-admin-webapps -y
 yum install zabbix-agent -y
-service tomcat8 start
-service zabbix-agent start
 #wget http://apache.ip-connect.vn.ua/tomcat/tomcat-9/v9.0.0.M18/bin/apache-tomcat-9.0.0.M18.tar.gz
 #tar -zxpvf apache-tomcat-9.0.0.M18.tar.gz -C /opt/
 #cd /opt
@@ -34,10 +32,24 @@ service zabbix-agent start
 #chmod +x *.sh
 
 echo "Config Tomcat users" >> ~/bootstrapped
-echo '<?xml version="1.0" encoding="UTF-8"?>' > /opt/tomcat/conf/tomcat-users.xml
-echo "<tomcat-users>" >> /opt/tomcat/conf/tomcat-users.xml
-echo '<user username="admin" password="deukecrh" roles="manager-gui,admin-gui"/>' >> /opt/tomcat/conf/tomcat-users.xml
-echo "</tomcat-users>" >> /opt/tomcat/conf/tomcat-users.xml
+echo '<?xml version="1.0" encoding="UTF-8"?>' > /etc/tomcat8/tomcat-users.xml
+echo '<tomcat-users xmlns="http://tomcat.apache.org/xml"' >> /etc/tomcat8/tomcat-users.xml
+echo '              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' >> /etc/tomcat8/tomcat-users.xml
+echo '              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"' >> /etc/tomcat8/tomcat-users.xml
+echo '              version="1.0">' >> /etc/tomcat8/tomcat-users.xml
+echo 
+echo '  <role rolename="admin"/>' >> /etc/tomcat8/tomcat-users.xml
+echo '  <role rolename="admin-gui"/>' >> /etc/tomcat8/tomcat-users.xml
+echo '  <role rolename="admin-script"/>' >> /etc/tomcat8/tomcat-users.xml
+echo '  <role rolename="manager"/>' >> /etc/tomcat8/tomcat-users.xml
+echo '  <role rolename="manager-gui"/>' >> /etc/tomcat8/tomcat-users.xml
+echo '  <role rolename="manager-script"/>' >> /etc/tomcat8/tomcat-users.xml
+echo '  <role rolename="manager-jmx"/>' >> /etc/tomcat8/tomcat-users.xml
+echo '  <role rolename="manager-status"/>' >> /etc/tomcat8/tomcat-users.xml
+echo '<user username="admin" password="deukecrh" roles="admin,manager,admin-gui,admin-script,manager-gui,manager-script,manager-jmx,manager-status"/>' >> /etc/tomcat8/tomcat-users.xml
+echo "</tomcat-users>" >> /etc/tomcat8/tomcat-users.xml
 
-./startup.sh
+#./startup.sh
 echo "End of bootstrap with userdata" >> ~/bootstrapped
+service tomcat8 start
+service zabbix-agent start
