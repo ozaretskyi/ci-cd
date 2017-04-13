@@ -1,14 +1,11 @@
 ---
 - name: Install Tomcat
   become: true
-  yum: name=tomcat state=present
+  yum: name=tomcat7 state=present
   notify: restart tomcat
 
 - name: Ensure Tomcat is enabled
   become: true
-  service: name=tomcat enabled=yes
+  service: name=tomcat7 enabled=yes
   notify: restart tomcat
-
-- include: config.yml
-  become: true
 

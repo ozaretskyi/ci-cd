@@ -1,17 +1,17 @@
-- name: Override systemd tomcat unit file
-  template: src=tomcat.service.j2 dest=/etc/systemd/system/tomcat.service
+#- name: Override systemd tomcat unit file
+#  template: src=tomcat.service.j2 dest=/etc/systemd/system/tomcat.service
 
-- name: Enable tomcat in systemd
-  command: /bin/systemctl enable tomcat
-  ignore_errors: yes
+#- name: Enable tomcat in systemd
+#  command: /bin/systemctl enable tomcat
+#  ignore_errors: yes
 
-- name: Reload systemd
-  command: /bin/systemctl daemon-reload
+#- name: Reload systemd
+#  command: /bin/systemctl daemon-reload
 
-- name: Override default tomcat logging.properties
-  template: src=logging.properties.j2 dest=/etc/tomcat/logging.properties
-  notify: restart tomcat
+#- name: Override default tomcat logging.properties
+#  template: src=logging.properties.j2 dest=/etc/tomcat/logging.properties
+#  notify: restart tomcat
 
-- name: Override default tomcat server.xml
-  template: src=server.xml.j2 dest=/etc/tomcat/server.xml
-  notify: restart tomcat
+#- name: Override default tomcat server.xml
+#  template: src=server.xml.j2 dest=/etc/tomcat/server.xml
+#  notify: restart tomcat
