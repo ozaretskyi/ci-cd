@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ssh_srv=184.73.77.146
+ssh_srv=54.88.90.184
 
 # Clone Git repo
 # ssh ubuntu@$ssh_srv -p22022 -t ssh root@localhost -p2222 -t ssh rustle@192.168.1.100 -p2222 
@@ -22,5 +22,7 @@ ansible-playbook zabbix-agent.yml -i inv -l jenkins
 #ansible-playbook tomcat.yml -i inv -l aws
 
 #SSH Tunnels to open Jenkins VM to AWS instance
-ssh vagrant@localhost -p2200 -t "ssh -R *:8080:localhost:8080 ubuntu@$ssh_srv -p22022 -fN"
-ssh vagrant@localhost -p2200 -t "ssh -R *:8081:localhost:8081 ubuntu@$ssh_srv -p22022 -fN"
+ssh vagrant@localhost -p2200 -t "sed -i -r 's/(\b[0-9]{1,3}\.){3}[0-9]{1,3}\b'/$ssh_srv/ jentun.sh"
+ssh vagrant@localhost -p2200 -t ./jentun.sh
+
+#SSH Tunnel to open Zabbix ports

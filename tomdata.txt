@@ -1,42 +1,17 @@
 #!/bin/bash -v
 echo "Start packages installation" >> ~/bootstrapped
+yum install epel-release mc -y
+rpm -ivh http://repo.zabbix.com/zabbix/3.2/rhel/6/x86_64/zabbix-release-3.2-1.el6.noarch.rpm
+yum clean all -y
 yum update -y
-yum install epel-release -y
-yum makecache fast
-yum update -y
-#yum install python-boto -y
-#yum install python-pip -y
-#pip install awscli --upgrade
-#pip install ansible
-yum clean all
-#echo "Install Java" >> ~/bootstrapped
-#yum install java-1.8.0-openjdk -y
 echo "Install Tomcat" >> ~/bootstrapped
 yum install tomcat7-webapps tomcat7-admin-webapps -y
+echo "Install Zabbix-agent" >> ~/bootstrapped
 yum install zabbix-agent -y
-#wget http://apache.ip-connect.vn.ua/tomcat/tomcat-9/v9.0.0.M18/bin/apache-tomcat-9.0.0.M18.tar.gz
-#tar -zxpvf apache-tomcat-9.0.0.M18.tar.gz -C /opt/
-#cd /opt
-#mv apache-tomcat-9.0.0.M18 tomcat
-#echo 'export CATALINA_HOME="/opt/tomcat"' >> ~/.bashrc
-#source ~/.bashrc
-
-#groupadd tomcat
-#useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat
-#cd /opt/tomcat
-#chgrp -R tomcat conf
-#chmod g+rwx conf
-#chmod g+r conf/*
-#chown -R tomcat:tomcat work/ temp/ logs/
-#cd /opt/tomcat/bin
-#chmod +x *.sh
 
 echo "Config Tomcat users" >> ~/bootstrapped
 echo '<?xml version="1.0" encoding="UTF-8"?>' > /etc/tomcat8/tomcat-users.xml
-echo '<tomcat-users xmlns="http://tomcat.apache.org/xml"' >> /etc/tomcat7/tomcat-users.xml
-echo '              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' >> /etc/tomcat7/tomcat-users.xml
-echo '              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"' >> /etc/tomcat7/tomcat-users.xml
-echo '              version="1.0">' >> /etc/tomcat7/tomcat-users.xml
+echo '<tomcat-users>' >> /etc/tomcat7/tomcat-users.xml
 echo 
 echo '  <role rolename="admin"/>' >> /etc/tomcat7/tomcat-users.xml
 echo '  <role rolename="admin-gui"/>' >> /etc/tomcat7/tomcat-users.xml
@@ -47,7 +22,9 @@ echo '  <role rolename="manager-script"/>' >> /etc/tomcat7/tomcat-users.xml
 echo '  <role rolename="manager-jmx"/>' >> /etc/tomcat7/tomcat-users.xml
 echo '  <role rolename="manager-status"/>' >> /etc/tomcat7/tomcat-users.xml
 echo '<user username="admin" password="deukecrh" roles="admin,manager,admin-gui,admin-script,manager-gui,manager-script,manager-jmx,manager-status"/>' >> /etc/tomcat7/tomcat-users.xml
-echo "</tomcat-users>" >> /etc/tomcat7/tomcat-users.xml
+echo '</tomcat-users>' >> /etc/tomcat7/tomcat-users.xml
+
+sed -i -r 's/.../.../g'   /etc/zabbix/zabbix_agentd.conf
 
 #./startup.sh
 echo "End of bootstrap with userdata" >> ~/bootstrapped

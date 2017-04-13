@@ -1,4 +1,6 @@
 #!/bin/bash -xe
+ssh_srv=54.88.90.184
+
 sed -i 's/Defaults[ ]*requiretty/#Defaults requiretty/g' /etc/sudoers
 yum update -y
 yum -y install epel-release
@@ -10,7 +12,7 @@ pip install awscli --upgrade
 yum install ansible -y
 yum clean all
 
-JENKINS_URL='http://172.31.49.85:8080'
+JENKINS_URL='http://$ssh_srv:8080'
 TOKEN='bootstrapme'
 NEW_HOST_FQDN='curl -s http://169.254.169.254/latest/meta-data/public-ipv4'
 NEW_HOST_ID='curl -s http://169.254.169.254/latest/meta-data/instance-id'
