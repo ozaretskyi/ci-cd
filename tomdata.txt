@@ -4,21 +4,22 @@ yum update -y
 yum install epel-release -y
 yum makecache fast
 yum update -y
-yum install python-boto -y
-yum install python-pip -y
-pip install awscli --upgrade
-pip install ansible
+#yum install python-boto -y
+#yum install python-pip -y
+#pip install awscli --upgrade
+#pip install ansible
 yum clean all
 echo "Install Java" >> ~/bootstrapped
-yum install java-1.8.0-openjdk -y
+#yum install java-1.8.0-openjdk -y
 echo "Install Tomcat" >> ~/bootstrapped
-yum install tomcat -y
+yum install tomcat8-webapps tomcat8-admin-webapps -y
+yum install zabbix-agent -y
 #wget http://apache.ip-connect.vn.ua/tomcat/tomcat-9/v9.0.0.M18/bin/apache-tomcat-9.0.0.M18.tar.gz
 #tar -zxpvf apache-tomcat-9.0.0.M18.tar.gz -C /opt/
 #cd /opt
 #mv apache-tomcat-9.0.0.M18 tomcat
-echo 'export CATALINA_HOME="/opt/tomcat"' >> ~/.bashrc
-source ~/.bashrc
+#echo 'export CATALINA_HOME="/opt/tomcat"' >> ~/.bashrc
+#source ~/.bashrc
 
 #groupadd tomcat
 #useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat
@@ -33,7 +34,7 @@ source ~/.bashrc
 echo "Config Tomcat users" >> ~/bootstrapped
 echo '<?xml version="1.0" encoding="UTF-8"?>' > /opt/tomcat/conf/tomcat-users.xml
 echo "<tomcat-users>" >> /opt/tomcat/conf/tomcat-users.xml
-echo '<user username="admin" password="password" roles="manager-gui,admin-gui"/>' >> /opt/tomcat/conf/tomcat-users.xml
+echo '<user username="admin" password="deukecrh" roles="manager-gui,admin-gui"/>' >> /opt/tomcat/conf/tomcat-users.xml
 echo "</tomcat-users>" >> /opt/tomcat/conf/tomcat-users.xml
 
 ./startup.sh

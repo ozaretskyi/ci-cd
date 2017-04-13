@@ -22,6 +22,5 @@ ansible-playbook zabbix-agent.yml -i inv -l jenkins
 #ansible-playbook tomcat.yml -i inv -l aws
 
 #SSH Tunnels to open Jenkins VM to AWS instance
-ssh vagrant@localhost -p2200 -t \
-ssh -R *:8080:localhost:8080 ubuntu@$ssh_srv -p22022 -fN \
-ssh -R *:8081:localhost:8081 ubuntu@$ssh_srv -p22022 -fN
+ssh vagrant@localhost -p2200 -t "ssh -R *:8080:localhost:8080 ubuntu@$ssh_srv -p22022 -fN"
+ssh vagrant@localhost -p2200 -t "ssh -R *:8081:localhost:8081 ubuntu@$ssh_srv -p22022 -fN"
