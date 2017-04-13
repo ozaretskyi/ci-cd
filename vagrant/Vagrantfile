@@ -21,6 +21,7 @@ Vagrant.configure(2) do |config|
     vm0.vm.network "forwarded_port", guest: 8081, host: 8081
 #    vm0.vm.network "forwarded_port", guest: 10050, host: 10050
     vm0.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/authorized_keys"
+    vm0.vm.provision "file", source: "../jenkins", destination: "/var/lib/"
     vm0.vm.provision "shell", path: "provision.sh"
   end
 

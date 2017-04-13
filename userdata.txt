@@ -9,18 +9,18 @@ yum -y install python-pip
 pip install awscli --upgrade
 yum install ansible -y
 yum clean all
+
 JENKINS_URL='http://172.31.49.85:8080'
 TOKEN='bootstrapme'
 NEW_HOST_FQDN='curl -s http://169.254.169.254/latest/meta-data/public-ipv4'
 NEW_HOST_ID='curl -s http://169.254.169.254/latest/meta-data/instance-id'
-#NEW_HOST_IP='curl -s http://169.254.169.254/latest/meta-data/public-ipv4'
 NEW_HOST_REGION='us-east-1'
 JOB_PARAMS="$JOB_PARAMS&NEW_HOST_FQDN=$NEW_HOST_FQDN"
 JOB_PARAMS="$JOB_PARAMS&NEW_HOST_ID=$NEW_HOST_ID"
 JOB_PARAMS="$JOB_PARAMS&NEW_HOST_REGION=$NEW_HOST_REGION"
-#JOB_PARAMS="$JOB_PARAMS&NEW_HOST_ENV=$NEW_HOST_ENV"
 JOB_URL="job/bootstrap-aws-instance/buildWithParameters?token=$TOKEN$JOB_PARAMS"
 URL="$JENKINS_URL/$JOB_URL"
+
 echo "#!/bin/bash" > /root/provision.sh
 echo "URL=\"$URL\"" >> /root/provision.sh
 echo "sleep 60" >> /root/provision.sh
