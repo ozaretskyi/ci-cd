@@ -4,6 +4,12 @@
   yum: name=tomcat7 state=present
   notify: restart tomcat
 
+- name: Copy configuration file
+  copy:
+    src=files/tomcat-users.xml
+    dest=/etc/tomcat7/tomcat-users.xml
+    owner=root group=tomcat mode=0644
+
 - name: Ensure Tomcat is enabled
   become: true
   service: name=tomcat7 enabled=yes

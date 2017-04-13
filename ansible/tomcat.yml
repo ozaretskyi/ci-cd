@@ -5,5 +5,4 @@
   hosts: all
   become: yes
   roles:
-    - java
     - tomcat

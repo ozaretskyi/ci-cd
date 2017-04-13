@@ -10,9 +10,9 @@ echo "Install Zabbix-agent" >> ~/bootstrapped
 yum install zabbix-agent -y
 
 echo "Config Tomcat users" >> ~/bootstrapped
-echo '<?xml version="1.0" encoding="UTF-8"?>' > /etc/tomcat8/tomcat-users.xml
+echo '<?xml version="1.0" encoding="UTF-8"?>' > /etc/tomcat7/tomcat-users.xml
 echo '<tomcat-users>' >> /etc/tomcat7/tomcat-users.xml
-echo 
+echo  >> /etc/tomcat7/tomcat-users.xml
 echo '  <role rolename="admin"/>' >> /etc/tomcat7/tomcat-users.xml
 echo '  <role rolename="admin-gui"/>' >> /etc/tomcat7/tomcat-users.xml
 echo '  <role rolename="admin-script"/>' >> /etc/tomcat7/tomcat-users.xml
@@ -24,7 +24,7 @@ echo '  <role rolename="manager-status"/>' >> /etc/tomcat7/tomcat-users.xml
 echo '<user username="admin" password="deukecrh" roles="admin,manager,admin-gui,admin-script,manager-gui,manager-script,manager-jmx,manager-status"/>' >> /etc/tomcat7/tomcat-users.xml
 echo '</tomcat-users>' >> /etc/tomcat7/tomcat-users.xml
 
-sed -i -r 's/.../.../g'   /etc/zabbix/zabbix_agentd.conf
+#sed -i -r 's/.../.../g'   /etc/zabbix/zabbix_agentd.conf
 
 #./startup.sh
 echo "End of bootstrap with userdata" >> ~/bootstrapped
