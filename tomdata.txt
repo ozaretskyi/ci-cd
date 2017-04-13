@@ -33,23 +33,22 @@ yum install zabbix-agent -y
 
 echo "Config Tomcat users" >> ~/bootstrapped
 echo '<?xml version="1.0" encoding="UTF-8"?>' > /etc/tomcat8/tomcat-users.xml
-echo '<tomcat-users xmlns="http://tomcat.apache.org/xml"' >> /etc/tomcat8/tomcat-users.xml
-echo '              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' >> /etc/tomcat8/tomcat-users.xml
-echo '              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"' >> /etc/tomcat8/tomcat-users.xml
-echo '              version="1.0">' >> /etc/tomcat8/tomcat-users.xml
+echo '<tomcat-users xmlns="http://tomcat.apache.org/xml"' >> /etc/tomcat7/tomcat-users.xml
+echo '              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"' >> /etc/tomcat7/tomcat-users.xml
+echo '              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"' >> /etc/tomcat7/tomcat-users.xml
+echo '              version="1.0">' >> /etc/tomcat7/tomcat-users.xml
 echo 
-echo '  <role rolename="admin"/>' >> /etc/tomcat8/tomcat-users.xml
-echo '  <role rolename="admin-gui"/>' >> /etc/tomcat8/tomcat-users.xml
-echo '  <role rolename="admin-script"/>' >> /etc/tomcat8/tomcat-users.xml
-echo '  <role rolename="manager"/>' >> /etc/tomcat8/tomcat-users.xml
-echo '  <role rolename="manager-gui"/>' >> /etc/tomcat8/tomcat-users.xml
-echo '  <role rolename="manager-script"/>' >> /etc/tomcat8/tomcat-users.xml
-echo '  <role rolename="manager-jmx"/>' >> /etc/tomcat8/tomcat-users.xml
-echo '  <role rolename="manager-status"/>' >> /etc/tomcat8/tomcat-users.xml
-echo '<user username="admin" password="deukecrh" roles="admin,manager,admin-gui,admin-script,manager-gui,manager-script,manager-jmx,manager-status"/>' >> /etc/tomcat8/tomcat-users.xml
-echo "</tomcat-users>" >> /etc/tomcat8/tomcat-users.xml
+echo '  <role rolename="admin"/>' >> /etc/tomcat7/tomcat-users.xml
+echo '  <role rolename="admin-gui"/>' >> /etc/tomcat7/tomcat-users.xml
+echo '  <role rolename="admin-script"/>' >> /etc/tomcat7/tomcat-users.xml
+echo '  <role rolename="manager"/>' >> /etc/tomcat7/tomcat-users.xml
+echo '  <role rolename="manager-gui"/>' >> /etc/tomcat7/tomcat-users.xml
+echo '  <role rolename="manager-script"/>' >> /etc/tomcat7/tomcat-users.xml
+echo '  <role rolename="manager-jmx"/>' >> /etc/tomcat7/tomcat-users.xml
+echo '  <role rolename="manager-status"/>' >> /etc/tomcat7/tomcat-users.xml
+echo '<user username="admin" password="deukecrh" roles="admin,manager,admin-gui,admin-script,manager-gui,manager-script,manager-jmx,manager-status"/>' >> /etc/tomcat7/tomcat-users.xml
+echo "</tomcat-users>" >> /etc/tomcat7/tomcat-users.xml
 
 #./startup.sh
 echo "End of bootstrap with userdata" >> ~/bootstrapped
-service tomcat8 start
-service zabbix-agent start
+service tomcat7 start
