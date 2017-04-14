@@ -15,7 +15,7 @@ NEW_HOST_REGION='us-east-1'
 JOB_PARAMS="$JOB_PARAMS&NEW_HOST_FQDN=$NEW_HOST_IP"
 JOB_PARAMS="$JOB_PARAMS&NEW_HOST_ID=$NEW_HOST_ID"
 JOB_PARAMS="$JOB_PARAMS&NEW_HOST_REGION=$NEW_HOST_REGION"
-JOB_URL="job/bootstrap-aws-instance/buildWithParameters?token=$TOKEN$JOB_PARAMS"
+JOB_URL="job/bootstrap-aws/buildWithParameters?token=$TOKEN$JOB_PARAMS"
 URL="$JENKINS_URL/$JOB_URL"
 
 echo "#!/bin/bash" > /root/provision.sh
