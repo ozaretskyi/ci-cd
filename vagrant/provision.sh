@@ -4,12 +4,12 @@
 sed -i 's/=enforcing/=disabled/g' /etc/selinux/config
 
 # Update and install soft
-yum update -y
+rpm -ivh http://repo.zabbix.com/zabbix/3.2/rhel/7/x86_64/zabbix-release-3.2-1.el7.noarch.rpm
 yum install epel-release -y
-yum install mc vim wget net-tools -y
-yum install pyhon-pip ansible python-boto -y
-pip install awscli --upgrade
 yum clean all
+yum update -y
+
+yum install ansible awscli mc vim wget net-tools -y
 
 # TheLab Network IPs to hosts
 echo . >> /etc/hosts
