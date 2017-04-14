@@ -1,9 +1,9 @@
 #!/bin/bash
 
-ssh_srv=54.88.90.184
+ssh_srv=54.87.177.83
 
 # Clone Git repo
-# ssh ubuntu@$ssh_srv -p22022 -t ssh root@localhost -p2222 -t ssh rustle@192.168.1.100 -p2222 
+# ssh ubuntu@$ssh_srv -p22022 -t ssh root@localhost -p2222 -t ssh rustle@54.87.177.83 -p2222 
 git clone git@github.com:ozaretskyi/ci-cd.git
 
 

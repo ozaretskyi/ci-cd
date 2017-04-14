@@ -1,5 +1,5 @@
 #!/bin/bash -xe
-ssh_srv=54.88.90.184
+ssh_srv=172.31.49.85
 
 sed -i 's/Defaults[ ]*requiretty/#Defaults requiretty/g' /etc/sudoers
 
@@ -7,20 +7,20 @@ yum install epel-release -y
 yum clean all
 yum update -y
 
-JENKINS_URL='http://$ssh_srv:8080'
+JENKINS_URL="http://$ssh_srv:8080"
 TOKEN='bootstrapme'
-NEW_HOST_IP='curl -s http://169.254.169.254/latest/meta-data/public-ipv4'
-NEW_HOST_ID='curl -s http://169.254.169.254/latest/meta-data/instance-id'
+NEW_HOST_IP=`curl -s http://169.254.169.254/latest/meta-data/local-ipv4`
+NEW_HOST_ID=`curl -s http://169.254.169.254/latest/meta-data/instance-id`
 NEW_HOST_REGION='us-east-1'
-JOB_PARAMS="$JOB_PARAMS&NEW_HOST_FQDN=$NEW_HOST_IP"
+JOB_PARAMS="$JOB_PARAMS&NEW_HOST_IP=$NEW_HOST_IP"
 JOB_PARAMS="$JOB_PARAMS&NEW_HOST_ID=$NEW_HOST_ID"
 JOB_PARAMS="$JOB_PARAMS&NEW_HOST_REGION=$NEW_HOST_REGION"
 JOB_URL="job/bootstrap-aws/buildWithParameters?token=$TOKEN$JOB_PARAMS"
 URL="$JENKINS_URL/$JOB_URL"
 
-echo "#!/bin/bash" > /root/provision.sh
+echo '#!/bin/bash' > /root/provision.sh
 echo "URL=\"$URL\"" >> /root/provision.sh
 echo "sleep 60" >> /root/provision.sh
-echo "while true ; do STATUSCODE=$(curl -X POST --silent --connect-timeout 60  --max-time 600 --output "/tmp/curltmp1" --write-out "%{http_code}" "$URL"  ); if test $STATUSCODE -ne 201; then echo "Status code $STATUSCODE not 201!"; sleep 30; else break; fi || break; done" >> /root/provision.sh
+echo "while true ; do STATUSCODE=$(curl -X POST --silent --connect-timeout 60 --max-time 600 --output "/tmp/curltmp1" --write-out "%{http_code}" "$URL"); if test $STATUSCODE -ne 201; then echo "Status code $STATUSCODE not 201!"; sleep 30; else break; fi || break; done" >> /root/provision.sh
 chmod 755 /root/provision.sh
 nohup bash /root/provision.sh &
