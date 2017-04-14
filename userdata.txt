@@ -2,8 +2,10 @@
 ssh_srv=54.88.90.184
 
 sed -i 's/Defaults[ ]*requiretty/#Defaults requiretty/g' /etc/sudoers
-yum update -y
+
+yum install epel-release -y
 yum clean all
+yum update -y
 
 JENKINS_URL='http://$ssh_srv:8080'
 TOKEN='bootstrapme'
