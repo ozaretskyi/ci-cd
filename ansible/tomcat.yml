@@ -3,6 +3,6 @@
 
 - name: Install Tomcat Server
   hosts: all
-  become: yes
+  become: true
   roles:
     - tomcat

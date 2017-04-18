@@ -1,6 +1,7 @@
 ---
 - name: Install Java
   hosts: all
+  become: true
   roles:
     - java
     - aws-cli

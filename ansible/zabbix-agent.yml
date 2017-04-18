@@ -1,5 +1,6 @@
 ---
 - name: install zabbix-agent
   hosts: all
+  become: true
   roles:
   - zabbix-agent

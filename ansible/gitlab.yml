@@ -1,6 +1,6 @@
 ---
 - name: GitLab Testing
   hosts: all
-  sudo: true
+  become: true
   roles:
     - gitlab

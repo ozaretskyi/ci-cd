@@ -1,6 +1,6 @@
 ---
+
 - name: Install Tomcat
-  become: true
   yum: name=tomcat7 state=present
   notify: restart tomcat
 
@@ -11,7 +11,6 @@
     owner=root group=tomcat mode=0644
 
 - name: Ensure Tomcat is enabled
-  become: true
   service: name=tomcat7 enabled=yes
   notify: restart tomcat
 

@@ -1,6 +1,7 @@
 ---
 - name: install zabbix-server
   hosts: zabbix-srv
+  become: true
   roles:
   - java
   - zabbix-server

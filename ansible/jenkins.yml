@@ -3,7 +3,7 @@
 
 - name: Install Jenkins
   hosts: all
-  sudo: true
+  become: true
   roles:
     - java
     - aws-cli
