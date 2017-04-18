@@ -1,0 +1,2 @@
+[all]
+aws-instance ansible_ssh_host=localhost ansible_ssh_port=2222 ansible_connection=ssh ansible_user=ec2-user
