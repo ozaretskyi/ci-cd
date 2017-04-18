@@ -2,4 +2,4 @@
 aws-instance ansible_ssh_host=localhost ansible_ssh_port=2222 ansible_connection=ssh ansible_user=ec2-user
 
 [all:vars]
-host_key_checking = False
+ansible_ssh_host_key_checking = False
