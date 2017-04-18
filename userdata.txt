@@ -10,11 +10,11 @@ yum update -y
 JENKINS_URL="http://$ssh_srv:8080"
 TOKEN='bootstrapme'
 NEW_HOST_IP=`curl -s http://169.254.169.254/latest/meta-data/public-ipv4`
-NEW_HOST_ID=`curl -s http://169.254.169.254/latest/meta-data/instance-id`
-NEW_HOST_REGION='us-east-1'
+#NEW_HOST_ID=`curl -s http://169.254.169.254/latest/meta-data/instance-id`
+#NEW_HOST_REGION='us-east-1'
 JOB_PARAMS="$JOB_PARAMS&NEW_HOST_IP=$NEW_HOST_IP"
-JOB_PARAMS="$JOB_PARAMS&NEW_HOST_ID=$NEW_HOST_ID"
-JOB_PARAMS="$JOB_PARAMS&NEW_HOST_REGION=$NEW_HOST_REGION"
+#JOB_PARAMS="$JOB_PARAMS&NEW_HOST_ID=$NEW_HOST_ID"
+#JOB_PARAMS="$JOB_PARAMS&NEW_HOST_REGION=$NEW_HOST_REGION"
 JOB_URL="job/bootstrap-aws/buildWithParameters?token=$TOKEN$JOB_PARAMS"
 URL="$JENKINS_URL/$JOB_URL"
 
