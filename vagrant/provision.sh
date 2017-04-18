@@ -9,7 +9,7 @@ yum install epel-release -y
 yum clean all
 yum update -y
 
-yum install ansible awscli mc vim wget net-tools -y
+yum install python-boto ansible awscli mc vim wget net-tools -y
 
 # TheLab Network IPs to hosts
 echo . >> /etc/hosts
