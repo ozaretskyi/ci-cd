@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ssh_srv=54.87.177.83
+ssh_srv=34.201.131.225
 
 # Clone Git repo
 # ssh ubuntu@$ssh_srv -p22022 -t ssh root@localhost -p2222 -t ssh rustle@54.87.177.83 -p2222 
