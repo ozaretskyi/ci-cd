@@ -1,8 +1,11 @@
 ---
 
 - name: Install Tomcat
-  yum: name=tomcat7 state=present
+  yum: name={{ item }} state=latest
   notify: restart tomcat
+  with_items:
+  - tomcat7-admin-webapps
+  - tomcat7-webapps
 
 - name: Copy configuration file
   copy:
