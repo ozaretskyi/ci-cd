@@ -17,10 +17,12 @@ vagrant up
 cd ~/ci-cd/ansible
 
 ansible-playbook jenkins.yml -i inv -l jenkins
+ansible-playbook artifactory.yml -i inv -l jenkins
 #ansible-playbook gitlab.yml -i inv -l gitlab-ce
 ansible-playbook zabbix-agent.yml -i inv -l jenkins
 #ansible-playbook tomcat.yml -i inv -l aws
 
+http://localhost:8080/job/create-aws-instance/build?token=createawsinstance
 #SSH Tunnels to open Jenkins VM to AWS instance
 ssh vagrant@localhost -p2200 -t "sed -i -r 's/(\b[0-9]{1,3}\.){3}[0-9]{1,3}\b'/$ssh_srv/ jentun.sh"
 ssh vagrant@localhost -p2200 -t ./jentun.sh
