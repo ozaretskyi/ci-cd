@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 # Disable selinux
 sed -i 's/=enforcing/=disabled/g' /etc/selinux/config

@@ -1,6 +1,12 @@
 #!/bin/bash
 
-ssh_srv=34.201.131.225
+
+if [ "$1" == "" ]; then
+	echo "Put Server IP as a parameter!"
+	exit 1
+fi  
+
+ssh_srv="$1"
 
 # Clone Git repo
 # ssh ubuntu@$ssh_srv -p22022 -t ssh root@localhost -p2222 -t ssh rustle@54.87.177.83 -p2222 
@@ -14,7 +20,7 @@ cd ci-cd/vagrant
 # cd ~/docker
 
 vagrant up
-cd ~/ci-cd/ansible
+cd ../ansible
 
 ansible-playbook jenkins.yml -i inv -l jenkins
 ansible-playbook artifactory.yml -i inv -l jenkins

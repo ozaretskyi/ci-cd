@@ -12,18 +12,19 @@ Vagrant.configure(2) do |config|
     vm0.vm.box = "centos/7"
     vm0.vm.host_name = "jenkins"
     vm0.vm.provider "virtualbox" do |vb|
-      vb.name = "vm0-jenkins"
+      vb.name = "lab-vm0-jenkins"
       vb.memory = "2048"
       vb.cpus = 2
     end
-    vm0.vm.network "private_network", type: "dhcp"
+    vm0.vm.network "private_network", ip: "172.17.72.10"
     vm0.vm.network "forwarded_port", guest: 8080, host: 8080
     vm0.vm.network "forwarded_port", guest: 8081, host: 8081
 #    vm0.vm.network "forwarded_port", guest: 10050, host: 10050
     vm0.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/authorized_keys"
 #    vm0.vm.provision "file", source: "~/.ssh/id_rsa", destination: "~/.ssh/id_rsa"
     vm0.vm.provision "file", source: "~/.ssh/jenkins_rsa", destination: "~/.ssh/jenkins_rsa"
-    vm0.vm.provision "file", source: "../jenkins", destination: "/var/lib/"
+    vm0.vm.provision "file", source: "../jenkins", destination: "/var/lib/" #, privileged: true
+    
     vm0.vm.provision "shell", path: "provision.sh"
   end
 
@@ -31,10 +32,10 @@ Vagrant.configure(2) do |config|
     vm1.vm.box = "centos/7"
     vm1.vm.hostname = "gitlab-ce"
     vm1.vm.provider "virtualbox" do |vb|
-      vb.name = "vm1-gitlab"
+      vb.name = "lab-vm1-gitlab"
       vb.memory = "1024"
     end
-    vm1.vm.network "private_network", type: "dhcp"
+    vm1.vm.network "private_network", ip: "172.17.72.11"
     vm1.vm.network "forwarded_port", guest: 80, host: 8800
     vm1.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/authorized_keys"
 #    vm1.vm.provision "file", source: "~/.ssh/id_rsa", destination: "~/.ssh/id_rsa"
@@ -45,11 +46,11 @@ Vagrant.configure(2) do |config|
   config.vm.define :zabbix do |vm2|
     vm2.vm.box = "centos/7"
     vm2.vm.host_name = "zabbix-srv"
-    vm2.vm.network "private_network", type: "dhcp"
+    vm2.vm.network "private_network", ip: "172.17.72.12"
     vm2.vm.network "forwarded_port", guest: 8080, host: 8880
     vm2.vm.network "forwarded_port", guest: 10050, host: 10050
     vm2.vm.provider "virtualbox" do |vb|
-      vb.name = "vm2-zabbix"
+      vb.name = "lab-vm2-zabbix"
     end
     vm2.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "~/.ssh/authorized_keys"
 #    vm2.vm.provision "file", source: "~/.ssh/id_rsa", destination: "~/.ssh/id_rsa"
@@ -59,7 +60,7 @@ Vagrant.configure(2) do |config|
 
   config.vm.define :ansibletower do |vm3|
     vm3.vm.box = "ansible/tower"
-    vm3.vm.hostname = "ansible-twr"
+    vm3.vm.hostname = "lab-ansible-twr"
     vm3.vm.network "private_network", type: "dhcp"
     vm3.vm.network "forwarded_port", guest: 8080, host: 8888
     vm3.vm.provider "virtualbox" do |vb|
