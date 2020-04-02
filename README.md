@@ -8,9 +8,9 @@ ci-cd autodeployment
 
 3. Make Jenkins jobs:
 
-    *a. Create AWS instance and provision tomcat, zabbix agent
-    *b. Make mvn build and push to artifactory
-    *c. Deploy project from artifactory to AWS instance
+    * a. Create AWS instance and provision tomcat, zabbix agent
+    * b. Make mvn build and push to artifactory
+    * c. Deploy project from artifactory to AWS instance
 
 # Goals:
 1. Jenkins server with artifactory and jobs
